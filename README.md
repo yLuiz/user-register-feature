@@ -116,8 +116,10 @@ $ npm run start:dev
 # Produção
 $ npm run start:prod
 ```
+# Observações
 
-* Obs: Por padrão a porta da aplicação é 3000, então certifique-se de que não há nenhuma aplicação rodando nesta porta.
+* Por padrão a porta da aplicação é 3000, então certifique-se de que não há nenhuma aplicação rodando nesta porta.
+* Em caso de algum erro, entre em contato via email: luizvictor1231@gmail.com
 
-Em caso de algum erro, entre em contato via email: luizvictor1231@gmail.com
+
 Grato.
