@@ -1,12 +1,12 @@
 <p align="center">
-  <a href="https://angular.io" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/240px-Angular_full_color_logo.svg.png" width="200" alt="Angular Logo" /></a>
+  <a align="center" href="https://angular.io" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/240px-Angular_full_color_logo.svg.png" width="200" alt="Angular Logo" /></a>
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
 ## Descrição
 
 <p>
-  Esta feature foi desenvolvida para a resolução parcial de um problema que faz o uso da estratégia Omnichannel e a partir do problema dado, a feature desejada para o início resolução foi a criação de clientes com os dados necessários para que o cliente possa fazer bom proveito da estratégia.
+  Esta feature foi desenvolvida para a resolução parcial de um problema que faz o uso da estratégia Omnichannel e a partir do problema dado, a feature desejada para o início resolução foi a CRIAÇÃO DE CLIENTES com os dados necessários para que o cliente possa fazer bom proveito da estratégia.
 </p>
 
 
@@ -33,6 +33,16 @@
  $ npm install
  ```
 
+Com tudo instalado, verifique se a API_URL está configurada corretamente no seguinte caminho ``src/environments/environment.ts``
+O arquivo deve está assim:
+
+``` bash
+export const environment = {
+  production: false,
+  API_URL: "http://localhost:3000"
+};
+```
+
 ## Executando a aplicação
 <p>
   Agora que todas as configurações estão feitas, basta executar a aplicação com o seguinte comando:
@@ -56,11 +66,10 @@ $ npm run start
 * Postman
 
 ## Instalação
-<p> 
+
   Para instalação do Backend, será necessário que você tenha instaldo o <a href="https://nodejs.org/en">Node.js</a>.
   Você pode acessar o guia de instalação a partir do link. 
-  <br />Além disso, você também deve instalar o Postgres e conectar a aplicação com o banco a partir de uma URL de conexão que deve ser colocada no arquivo ´.env´, dentro deste arquivo deve está algo semelhante a isto:
-</p>
+  <br />Além disso, você também deve instalar o Postgres e conectar a aplicação com o banco a partir de uma URL de conexão que deve ser colocada no arquivo ``.env``, dentro deste arquivo deve está algo semelhante a isto:
 
 ``` bash
 DATABASE_URL="postgresql://<user>:<password>@localhost:5432/<database>?schema=public"
@@ -81,7 +90,7 @@ $ npm install
  ```
  
  <p>
-  Com o banco configurado e dependências instaldas, abra o terminal na raíz do projeto e digite os seguintes comandos:
+  Com o banco configurado e dependências instaladas, abra o terminal na raíz do projeto e digite os seguintes comandos:
  </p>
  
 ``` bash
@@ -107,3 +116,8 @@ $ npm run start:dev
 # Produção
 $ npm run start:prod
 ```
+
+* Obs: Por padrão a porta da aplicação é 3000, então certifique-se de que não há nenhuma aplicação rodando nesta porta.
+
+Em caso de algum erro, entre em contato via email: luizvictor1231@gmail.com
+Grato.
