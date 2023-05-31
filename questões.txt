@@ -1,3 +1,6 @@
+ * Devido minha falta de conhecimento no Padrão C4 Model, não consegui concluir os requisitos 7 e 8 do desafio.
+ No entanto, achei interessante e de grande importância agora que me foi apresentado, e já estou indo atrás do conteúdo sobre o assunto. *
+ 
  - Questões -
 Responda sucintamente os itens a seguir em um .txt levando as perguntas e as 
 respostas para o controle de versão da maneira que julgar mais apropriado: 
