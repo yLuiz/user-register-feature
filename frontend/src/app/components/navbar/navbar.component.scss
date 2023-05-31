@@ -1,0 +1,15 @@
+.navbar {
+    width: 100%;
+    background-color: #2A2B60;
+
+    .logo {
+        display: block;
+        text-decoration: none;
+        margin-left: 20px;
+        width: min-content;
+        height: 80px;   
+        img {
+            height: 100%;
+        }
+    }
+}

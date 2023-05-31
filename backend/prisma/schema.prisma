@@ -28,10 +28,11 @@ model customer {
   created_at DateTime       @default(now())
   updated_at DateTime       @updatedAt
   deleted    Boolean?       @default(false)
+  purchase   purchase[]
 }
 
 model address {
-  id             Int    @id @default(autoincrement())
+  id             Int      @id @default(autoincrement())
   cep            String
   state          String
   city           String
@@ -40,7 +41,32 @@ model address {
   number         String
   complement     String
   identification String
+  customer       customer @relation(fields: [customer_id], references: [id])
+  customer_id    Int      @unique
+}
 
-  customer    customer @relation(fields: [customer_id], references: [id])
-  customer_id Int      @unique
+model purchase {
+  id                Int                 @id @default(autoincrement())
+  customer          customer            @relation(fields: [customer_id], references: [id])
+  customer_id       Int
+  created_at        DateTime            @default(now())
+  productInPurchase productInPurchase[]
+}
+
+model productInPurchase {
+  id          Int      @id @default(autoincrement())
+  purchase    purchase @relation(fields: [purchase_id], references: [id])
+  purchase_id Int
+  product     product  @relation(fields: [product_id], references: [id])
+  product_id  Int
+}
+
+model product {
+  id                Int                 @id @default(autoincrement())
+  name              String
+  description       String
+  price             Float
+  productInPurchase productInPurchase[]
+  created_at        DateTime            @default(now())
+  updated_at        DateTime            @updatedAt
 }

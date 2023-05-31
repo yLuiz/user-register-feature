@@ -1,5 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { CustomerService } from 'src/app/services/customer.service';
+import { UtilsService } from 'src/app/services/utils.service';
 import { ICustomerForm } from 'src/interfaces/ICustomer';
 
 @Component({
@@ -7,7 +10,14 @@ import { ICustomerForm } from 'src/interfaces/ICustomer';
   templateUrl: './customer-form.component.html',
   styleUrls: ['./customer-form.component.scss']
 })
-export class CustomerFormComponent implements OnInit {
+export class CustomerFormComponent implements OnInit, OnDestroy {
+
+  constructor(
+    private _messageService: MessageService,
+    private _customerService: CustomerService,
+    private _utilsService: UtilsService
+  ) { }
+  
 
   customerForm!: FormGroup;
   @Output() submitEvent: EventEmitter<any> = new EventEmitter();
@@ -18,13 +28,43 @@ export class CustomerFormComponent implements OnInit {
     { name: "Outro", code: "other" },
   ]
 
-  showBirthdateValue() {
-    const birthdate = this.customerForm.get('birthdate')?.value;
-    console.log(birthdate);
+  ufToSate: any = {
+    'AC': 'Acre',
+    'AL': 'Alagoas',
+    'AP': 'Amapá',
+    'AM': 'Amazonas',
+    'BA': 'Bahia',
+    'CE': 'Ceará',
+    'DF': 'Distrito Federal',
+    'ES': 'Espírito Santo',
+    'GO': 'Goías',
+    'MA': 'Maranhão',
+    'MT': 'Mato Grosso',
+    'MS': 'Mato Grosso do Sul',
+    'MG': 'Minas Gerais',
+    'PA': 'Pará',
+    'PB': 'Paraíba',
+    'PR': 'Paraná',
+    'PE': 'Pernambuco',
+    'PI': 'Piauí',
+    'RJ': 'Rio de Janeiro',
+    'RN': 'Rio Grande do Norte',
+    'RS': 'Rio Grande do Sul',
+    'RO': 'Rondônia',
+    'RR': 'Roraíma',
+    'SC': 'Santa Catarina',
+    'SP': 'São Paulo',
+    'SE': 'Sergipe',
+    'TO': 'Tocantins',
   }
+
+  isSubmitted = false;
+  loadingCEP = false;
 
   onSubmit(event: SubmitEvent) {
     event.preventDefault();
+
+    this.isSubmitted = true;
 
     console.log(this.gender?.value.code)
 
@@ -32,7 +72,24 @@ export class CustomerFormComponent implements OnInit {
     customerBirthdate = [customerBirthdate[2], customerBirthdate[1], customerBirthdate[0]].join("-") + "T12:00:00.000Z"; // Para deixar o dia precisamente exato ao que foi digitado.
 
     if (this.customerForm.invalid) {
-      console.log("formulário inválido")
+      this._messageService.add({
+        severity: 'error',
+        detail: "Verifique se todos os campos estão corretos e preenchidos",
+        summary: "Formulário inválido"
+      })
+
+      this.isSubmitted = false;
+      return;
+    } 
+
+    if (this.password?.value !== this.confirmPassword?.value) {
+      this._messageService.add({
+        severity: 'error',
+        detail: "Senhas inválidas",
+        summary: "Campos inválido"
+      })
+
+      this.isSubmitted = false;
       return;
     }
 
@@ -61,7 +118,65 @@ export class CustomerFormComponent implements OnInit {
     this.submitEvent.emit(customerSerialized);
   }
 
-  constructor() { }
+  onCompletedBirthdate() {
+    let formatedDate = this.birthdate?.value.split('/');
+    formatedDate = [formatedDate[2], formatedDate[1], formatedDate[0]].join('-') + "T12:00:00.000Z";
+    const isValidDate = this._utilsService.isValidDate(formatedDate);
+
+    if (!isValidDate) {
+      this._messageService.add({
+        severity: 'error',
+        summary: "Campo inválido",
+        detail: "Data Inválida"
+      })
+
+      this.birthdate?.setValue('')
+
+      return;
+    }
+  }
+
+  onCompletedCPF() {
+
+    console.log('completed')
+
+    this.loadingCEP = true;
+
+    this._utilsService.getCEP(this.cep?.value).subscribe({
+      next: CEPData => {
+        console.log(CEPData)
+        if (CEPData.erro) {
+          this._messageService.add({
+            severity: 'error',
+            summary: "Campo inválido",
+            detail: "CEP Inválido"
+          })
+
+          this.cep?.setValue('')
+
+          return;
+        }
+
+        this.state?.setValue(this.ufToSate[CEPData.uf])
+        this.city?.setValue(CEPData.localidade)
+        this.street?.setValue(CEPData.logradouro)
+        this.neighborhood?.setValue(CEPData.bairro)
+
+
+      },
+      error: response => {
+        console.error(response)
+        this._messageService.add({
+          severity: 'error',
+          summary: "Error",
+          detail: "Erro ao válidar CEP"
+        })
+      },
+      complete: () => {
+        this.loadingCEP = false;
+      }
+    })
+  }
 
   ngOnInit(): void {
 
@@ -85,7 +200,23 @@ export class CustomerFormComponent implements OnInit {
 
     })
 
+    this.state?.disable()
+    this.city?.disable()
+    this.street?.disable()
+    this.neighborhood?.disable()
+
+    this._customerService.actionSuccessful.subscribe(success => {
+      if (!success) {
+        this.isSubmitted = false;
+      }
+    })
+
   }
+
+  ngOnDestroy(): void {
+    this.isSubmitted = false;
+  }
+
 
   get password() {
     return this.customerForm.get('password');
