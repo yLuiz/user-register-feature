@@ -1,5 +1,5 @@
 import { Module, Global, ValidationPipe } from '@nestjs/common';
-import { UsersModule } from './users/users.module';
+import { CustomersModule } from './customers/customers.module';
 import { PrismaService } from './prisma/prisma.service';
 import { APP_PIPE } from '@nestjs/core';
 import { UtilsService } from './utils/utils.service';
@@ -8,7 +8,7 @@ import { HttpModule } from '@nestjs/axios';
 @Global()
 @Module({
   imports: [
-    UsersModule,
+    CustomersModule,
     HttpModule
   ],
   controllers: [],

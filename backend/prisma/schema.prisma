@@ -10,24 +10,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum UserGender {
-  MASCULINE
-  FEMININE
-  OTHER
+enum CustomerGender {
+  masculine
+  feminine
+  other
 }
 
-model user {
-  id         Int        @id @default(autoincrement())
+model customer {
+  id         Int            @id @default(autoincrement())
   name       String
-  email      String     @unique
+  email      String         @unique
   phone      String
-  gender     UserGender
-  cpf        String     @unique
+  gender     CustomerGender
+  cpf        String         @unique
   birthdate  DateTime
   address    address?
-  created_at DateTime   @default(now())
-  updated_at DateTime   @updatedAt
-  deleted    Boolean?   @default(false)
+  created_at DateTime       @default(now())
+  updated_at DateTime       @updatedAt
+  deleted    Boolean?       @default(false)
 }
 
 model address {
@@ -41,6 +41,6 @@ model address {
   complement     String
   identification String
 
-  user    user @relation(fields: [user_id], references: [id])
-  user_id Int  @unique
+  customer    customer @relation(fields: [customer_id], references: [id])
+  customer_id Int      @unique
 }

@@ -1,0 +1,151 @@
+<form (submit)="onSubmit($event)" [formGroup]="customerForm" class="customer-form">
+    
+    <div class="left-form">
+        <div class="customer-informations-container form-div">
+            <h2>Informações Pessoais</h2>
+            <div class="form-group">
+                <span class="p-float-label">
+                    <input formControlName="name" onkeydown="return /[a-z, ]/i.test(event.key)" id="name" type="text" pInputText> 
+                    <label for="name">Nome</label>
+                </span>
+            </div>
+    
+            <div class="form-group">
+                <span class="p-float-label">
+                    <p-inputMask [unmask]="true" [className]="'inputmask'" id="cpf" formControlName="cpf" mask="999.999.999-99"></p-inputMask>
+                    <label for="cpf">CPF</label>
+                </span>
+            </div>
+    
+            <div class="form-group">
+                <span class="p-float-label">
+                    <p-inputMask (onInput)="showBirthdateValue()" [className]="'inputmask'" id="birthdate" [unmask]="false" formControlName="birthdate" mask="99/99/9999"></p-inputMask>
+                    <label for="birthdate">Data Nascimento</label>
+                </span>
+            </div>
+    
+            <div class="form-group">
+
+                <span class="p-float-label">
+                    <p-dropdown id="gender" [options]="genderOptions" formControlName="gender" optionLabel="name"></p-dropdown>
+                    <label for="gender">Genêro</label>
+                </span>
+            </div>
+    
+            <div class="form-group">
+                <span class="p-float-label">
+                    <p-inputMask [unmask]="true" [className]="'inputmask'" id="phone" formControlName="phone" mask="(99) 9 9999-9999"></p-inputMask>
+                    <label for="phone">Telefone</label>
+                </span>
+            </div>
+    
+            
+        </div>
+    
+        <div class="customer-credentials-container form-div">
+            <h2>Credênciais</h2>
+            <div class="form-group">
+                <span class="p-float-label">
+                    <input formControlName="email" [type]="'email'" id="email" type="text" pInputText> 
+                    <label for="email">Email</label>
+                </span>
+            </div>
+            <div class="form-group">
+                <span class="p-float-label">                
+                    <p-password id="password" 
+                        formControlName="password"
+                        [promptLabel]="'Insira sua senha'" 
+                        [weakLabel]="'Fraca'"
+                        [mediumLabel]="'Mediana'"
+                        [strongLabel]="'Forte'"
+                        [toggleMask]="true"
+                    >
+                        <ng-template pTemplate="footer">
+                            <p class="mt-2">Critérios</p>
+                            <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5; margin-left: 2em;">
+                                <li>Pelo menos uma letra minúscula</li>
+                                <li>Pelo menos uma letra maiúscula</li>
+                                <li>Pelo menos um número</li>
+                                <li>Minímo 6 caracteres</li>
+                            </ul>
+                        </ng-template>
+                    </p-password>
+                    <label for="password">Senha</label>
+                </span>
+            </div>
+            <div class="form-group">
+                <span class="p-float-label">
+                    <p-password id="confirm-password" 
+                        formControlName="confirmPassword"
+                        [toggleMask]="true"
+                        [feedback]="false"
+                    ></p-password>
+                    <label for="confirm-password">Confirmação de senha</label>
+                </span>
+                <small class="error" *ngIf="confirmPassword?.value.length > 0 && confirmPassword?.value !== password?.value">Senhas não correspondem</small>
+            </div>
+            
+        </div>
+    
+    </div>
+
+    <div class="adress-container form-div">
+        <h2>Endereço</h2>
+
+        <div class="form-group">
+            <span class="p-float-label">
+                <p-inputMask [unmask]="true" formControlName="cep" [className]="'inputmask'" id="cep" formControlName="cep" mask="99999-999"></p-inputMask>
+
+                <label for="cep">CEP</label>
+            </span>
+        </div>
+
+        <div class="form-group">
+            <span class="p-float-label">
+                <input formControlName="state" id="state" type="text" pInputText> 
+                <label for="state">Estado</label>
+            </span>
+        </div>
+        <div class="form-group">
+            <span class="p-float-label">
+                <input formControlName="city" id="city" type="text" pInputText> 
+                <label for="city">Cidade</label>
+            </span>
+        </div>
+        <div class="form-group">
+            <span class="p-float-label">
+                <input formControlName="neighborhood" id="neighborhood" type="text" pInputText> 
+                <label for="neighborhood">Bairro</label>
+            </span>
+        </div>
+        <div class="form-group">
+            <span class="p-float-label">
+                <input formControlName="street" id="street" type="text" pInputText> 
+                <label for="street">Logradouro</label>
+            </span>
+        </div>
+        <div class="form-group">
+            <span class="p-float-label">
+                <input formControlName="number" id="number" type="text" pInputText> 
+                <label for="number">Número</label>
+            </span>
+        </div>
+        <div class="form-group">
+            <span class="p-float-label">
+                <input formControlName="identification" id="identification" type="text" pInputText> 
+                <label for="identification">Identificação</label>
+            </span>
+        </div>
+        <div class="form-group">
+            <span class="p-float-label">
+                <input formControlName="complement" id="complement" type="text" pInputText> 
+                <label for="complement">Complemento</label>
+            </span>
+        </div>
+        <div class="form-group">
+            <button pButton type="submit" label="Finalizar cadastro" style="width: 100%;"></button>
+        </div>
+    </div>
+</form>
+
+<!-- Cep, Estado, Cidade, Bairro, Logradouro, Número, Complemento, Identificação (ex: casa,) -->

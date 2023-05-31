@@ -1,9 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { rejects } from 'assert';
-import { AxiosResponse } from 'axios';
-import { resolve } from 'path';
-import { Observable, firstValueFrom } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class UtilsService {

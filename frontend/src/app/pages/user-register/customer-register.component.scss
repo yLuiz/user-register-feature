@@ -1,0 +1,33 @@
+.user-register-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+
+    h1 {
+        font-size: 2em;
+        margin-top: 1em;
+    }
+}
+
+.form-container {
+    border-radius: 12px;
+    width: 100%;
+    max-width: 1150px;
+    overflow: hidden;
+    padding: 60px;
+}
+
+@media (max-width: 982px) {
+    .form-container {
+        padding: 80px 20px;
+    }
+}
+// app-user-form {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     width: 100%;
+// }

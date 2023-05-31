@@ -1,0 +1,33 @@
+ - Questões -
+Responda sucintamente os itens a seguir em um .txt levando as perguntas e as 
+respostas para o controle de versão da maneira que julgar mais apropriado: 
+
+1. A solução deve ser disponibilizada em Cloud ou On-premise? 
+A solução para este problema exige uma ótima escalabilidade, e uma dinamicidade entre plataformas e sistemas. Então vejo que isto se encaixa perfeitamente
+para uma solução utilizando microsserviços, no qual acredito que sendo disponibilizado em Cloud irá proporcionar algo mais acessível à todos os clientes que 
+desejarão utilizar das plataformas ou canais, sejam: Canais online, offline, Web, App Mobile ou até mesmo o próprio sistema da empresa, além de gerar um menor 
+gasto em relação ao uso de servidores, diminuirá a latência de informação. Além permitir um flexibilidade para o crescimento do serviço (a escalabilidade).
+Em resumo, o serviço em Cloud será mais acessível por permitir o acesso ao serviço em qualquer lugar e em qualquer plataforma.
+
+2. Considerando a participação de 4 pessoas técnicas para o desenvolvimento dessa solução, 
+responda qual ferramenta acreditas ser apropriada para o controle de tarefas da equipe, 
+a ferramenta é ágil? 
+Há diversas ferramentas para um bom gerenciamento de tarefas ou projetos, dentre elas: O Trello, Microsoft Planner, ClickUp, Jira, etc.
+Acredito que para este problema, a melhor ferramenta seria o Jira, pois ele é sim uma ferramenta ágil e proporciona o uso de qualquer metodológia ágil 
+que se encaixar ao seu problema, como por exemplo: Kanban e Scrum. Metodológias essas que julgo serem boas escolhas para o gerenciamento desse problema.
+
+3. Você se sente capaz de liderar esta equipe? Por quê? 
+Acredito que sim, no entanto, é um problema em específico que não tive que lidar antes. Mas com alguns dias de estudo sobre a estratégia de Omnichannel e uma 
+boa análise de requisitos no qual a solução do problema deve atender, acredito ser capaz de ver em um escopo macro e determinar o que seria o ideal para a equipe 
+alcançar a solução do problema e quais as necessidades técnicas.
+
+4. Se pudesse sugerir uma melhoria, mudança ou oportunidade. O que seria? 
+No problema não foi citado explicitamente o uso de microsserviços, e como já citei em uma das questões, acredito que o jeito mais otimizado e performático 
+para a solução do problema, seria o uso de uma arquitetura de microsserviços, pois a partir deles, haverá uma facilidade para manutenção e crescimento 
+do serviço, e em casos de falha no mesmo, isso não afetará o sistema da empresa como um todo, apenas aquele serviço em específico, além da vantagem de poder ser
+implementado em diversos meios e plataformas.
+
+5. Acha válido esse desafio para o processo que está participando?
+Sim, acho válido porque a estratégia Omnichannel é algo específico do Varejo e Vendas no geral. Logo, sendo um processo para uma empresa como a Bemol que 
+trabalha diretamente com venda de diversos produtos e tem o objetivo de gerar maior conforto e facilidade nas compras dos clientes, saber como implementar 
+esta estratégia atráves da programação e arquitetura de sistemas, é essencial, pois é um conceito aplicado diretamente ao escopo de pessoas que a empresa atende.

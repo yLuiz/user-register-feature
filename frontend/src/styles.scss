@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import './overrides/primeng.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.error {
+    color: #ff3e3e;
+}
