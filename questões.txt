@@ -6,7 +6,7 @@ respostas para o controle de versão da maneira que julgar mais apropriado:
 A solução para este problema exige uma ótima escalabilidade, e uma dinamicidade entre plataformas e sistemas. Então vejo que isto se encaixa perfeitamente
 para uma solução utilizando microsserviços, no qual acredito que sendo disponibilizado em Cloud irá proporcionar algo mais acessível à todos os clientes que 
 desejarão utilizar das plataformas ou canais, sejam: Canais online, offline, Web, App Mobile ou até mesmo o próprio sistema da empresa, além de gerar um menor 
-gasto em relação ao uso de servidores, diminuirá a latência de informação. Além permitir um flexibilidade para o crescimento do serviço (a escalabilidade).
+gasto em relação ao uso de servidores, diminuirá a latência de informação. Além de permitir uma flexibilidade para o crescimento do serviço (escalabilidade).
 Em resumo, o serviço em Cloud será mais acessível por permitir o acesso ao serviço em qualquer lugar e em qualquer plataforma.
 
 2. Considerando a participação de 4 pessoas técnicas para o desenvolvimento dessa solução, 
